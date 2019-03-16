@@ -1,6 +1,6 @@
 ﻿namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -14,5 +14,34 @@
             Cor = cor;
             QtdMovimentos = 0;
         }
+
+        public void incrementarQtdMovimentos()
+        {
+            QtdMovimentos++;
+        }
+
+        public bool existeMovimentosPossiveis()
+        {
+            bool[,] mat = movimentosPossiveis();
+            for (int i = 0; i < Tab.Linha; i++)
+            {
+                for (int j = 0; j < Tab.Coluna; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool podeMoverPeca(Posicao pos)
+        {
+            return movimentosPossiveis()[pos.Linha, pos.Coluna];
+        }
+
+        public abstract bool[,] movimentosPossiveis();
+
     }
 }

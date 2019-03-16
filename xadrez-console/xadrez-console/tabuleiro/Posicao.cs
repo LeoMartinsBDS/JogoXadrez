@@ -5,7 +5,14 @@
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-        public Posicao(int linha, int coluna) {
+        public Posicao(int linha, int coluna)
+        {
+            Linha = linha;
+            Coluna = coluna;
+        }
+
+        public void definirValores(int linha, int coluna)
+        {
             Linha = linha;
             Coluna = coluna;
         }
