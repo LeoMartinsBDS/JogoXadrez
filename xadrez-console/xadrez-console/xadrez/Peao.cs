@@ -13,10 +13,11 @@ namespace xadrez_console.xadrez
             return "P";
         }
 
-        private bool existeInimigo(Posicao pos)
+        private bool existeInimigo(Posicao pos, Cor cor)
         {
-            Peca p = Tab.peca(pos);
-            return p == null || p.Cor != Cor;
+            Peca p = Tab.peca(pos, cor);
+
+            return p != null || cor != Cor;
         }
 
         private bool livre(Posicao pos)
@@ -44,12 +45,12 @@ namespace xadrez_console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
-                if (Tab.posicaoValida(pos) && existeInimigo(pos))
+                if (Tab.posicaoValida(pos) && existeInimigo(pos, Cor))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
-                if (Tab.posicaoValida(pos) && existeInimigo(pos))
+                if (Tab.posicaoValida(pos) && existeInimigo(pos, Cor))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -68,12 +69,12 @@ namespace xadrez_console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
-                if (Tab.posicaoValida(pos) && existeInimigo(pos))
+                if (Tab.posicaoValida(pos) && existeInimigo(pos, Cor))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
-                if (Tab.posicaoValida(pos) && existeInimigo(pos))
+                if (Tab.posicaoValida(pos) && existeInimigo(pos, Cor))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }

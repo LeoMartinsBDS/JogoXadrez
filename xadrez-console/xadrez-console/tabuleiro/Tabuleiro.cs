@@ -23,6 +23,11 @@
             return Pecas[pos.Linha, pos.Coluna];
         }
 
+        public Peca peca(Posicao pos, Cor cor)
+        {
+            return Pecas[pos.Linha, pos.Coluna];
+        }
+
         public bool existePeca(Posicao pos)
         {
             validarPosicao(pos);
